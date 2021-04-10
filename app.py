@@ -34,10 +34,10 @@ class Data(db.Model):
 
 #This is the index route where we are going to
 #query on all our student data
-@app.route('/')
+@app.route('/', methods = ['GET', 'POST'])
 def Index():
-    all_data = Data.query.all()
 
+    all_data = Data.query.all()
     return render_template("index.html", students = all_data)
 
 
@@ -45,7 +45,6 @@ def Index():
 #this route is for inserting data to mysql database via html forms
 @app.route('/insert', methods = ['POST'])
 def insert():
-
     if request.method == 'POST':
 
         first_name = request.form['first_name']
@@ -65,18 +64,9 @@ def insert():
 #this is our read and update route where we are going to read our student record
 @app.route('/read', methods = ['GET', 'POST'])
 def read():
-
-    if request.method == 'POST':
-        read_data = Data.query.get(request.form.get('read_id'))
-        read_data.first_name = request.form['first_name']
-        read_data.last_name = request.form['last_name']
-        read_data.date_of_birth = request.form['date_of_birth']
-        read_data.amount_due = request.form['amount_due']
-
-        db.session.commit()
-        flash("Student Updated Successfully")
-
-        return redirect(url_for('Index'))
+    personId = request.form['read_id']
+    read_data = Data.query.filter(Data.student_id==personId)
+    return render_template("index.html", students = read_data)
 
 
 #this is our update route where we are going to update our student record
