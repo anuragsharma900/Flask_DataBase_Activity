@@ -20,7 +20,7 @@
 --
 
 DROP TABLE IF EXISTS `data`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `data` (
   `student_id` int NOT NULL AUTO_INCREMENT,
@@ -30,7 +30,8 @@ CREATE TABLE `data` (
   `amount_due` int DEFAULT NULL,
   PRIMARY KEY (`student_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=100799869 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+
 
 --
 -- Dumping data for table `data`

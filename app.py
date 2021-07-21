@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.secret_key = "Secret Key"
 
 #SqlAlchemy Database Configuration With Mysql
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:sahib@localhost/crud'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:sahib@mysql_cont/crud'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -105,4 +105,4 @@ def delete(student_id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True)
